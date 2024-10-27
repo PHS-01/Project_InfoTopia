@@ -1,0 +1,170 @@
+openapi: '3.0.1'
+info:
+  title: API - Cadastro de Imagem
+  description: |
+    A API de Cadastro de Imagem permite que clientes enviem imagens para serem armazenadas no servidor, 
+    juntamente com metadados. 
+  version: '0.1'
+servers:
+  - url: http://{host}:{porta}/api
+    variables:
+      host:
+        default: localhost
+      porta:
+        default: '8000'
+paths:
+  /images:
+    get:
+      summary: Lista todas as imagens.
+      responses:
+        200:
+          description: Lista de imagens.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: ID da imagem.
+                    url:
+                      type: string
+                      description: URL para acessar a imagem.
+                    nome:
+                      type: string
+                      description: Nome da imagem.
+                    descricao:
+                      type: string
+                      description: Descrição da imagem.
+                    tamanho:
+                      type: integer
+                      description: Tamanho da imagem em bytes.
+                      example: 204800
+                    data_criacao:
+                      type: string
+                      format: date-time
+                      description: Data de criação da imagem.
+        500:
+          description: Erro ao buscar as imagens.
+
+    post:
+      summary: Cadastra uma nova imagem.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                imagem:
+                  type: string
+                  format: binary
+                  description: O arquivo da imagem (PNG, JPEG, etc.).
+                nome:
+                  type: string
+                  description: Nome descritivo da imagem.
+                  example: Foto de Perfil
+                descricao:
+                  type: string
+                  description: Descrição da imagem.
+                  example: Imagem de perfil do usuário.
+      responses:
+        201:
+          description: Imagem cadastrada com sucesso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID da imagem cadastrada.
+                  url:
+                    type: string
+                    description: URL da imagem cadastrada.
+                  tamanho:
+                    type: integer
+                    description: Tamanho da imagem em bytes.
+                    example: 204800
+        400:
+          description: Requisição inválida.
+        500:
+          description: Erro ao processar o upload da imagem.
+
+  /images/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: ID da imagem a ser acessada.
+    get:
+      summary: Acessa uma imagem específica.
+      responses:
+        200:
+          description: Imagem encontrada com sucesso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID da imagem.
+                  nome:
+                    type: string
+                    description: Nome da imagem.
+                  descricao:
+                    type: string
+                    description: Descrição da imagem.
+                  url:
+                    type: string
+                    description: URL da imagem.
+                  tamanho:
+                    type: integer
+                    description: Tamanho da imagem em bytes.
+                    example: 204800
+                  data_criacao:
+                    type: string
+                    format: date-time
+                    description: Data de criação da imagem.
+        404:
+          description: Imagem não encontrada.
+        500:
+          description: Erro ao acessar a imagem.
+    put:
+      summary: Atualiza uma imagem específica.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nome:
+                  type: string
+                  description: Novo nome para a imagem.
+                  example: Foto Atualizada
+                descricao:
+                  type: string
+                  description: Nova descrição da imagem.
+                  example: Imagem de perfil atualizada.
+      responses:
+        200:
+          description: Imagem atualizada com sucesso.
+        404:
+          description: Imagem não encontrada.
+        500:
+          description: Erro ao atualizar a imagem.
+    delete:
+      summary: Deleta uma imagem específica.
+      responses:
+        200:
+          description: Imagem deletada com sucesso.
+        404:
+          description: Imagem não encontrada.
+        500:
+          description: Erro ao tentar deletar a imagem.
