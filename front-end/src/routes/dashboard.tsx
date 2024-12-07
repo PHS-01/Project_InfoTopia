@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import AsideMenu from "../components/sections/AsideMenu"
 import Post from "../components/Post"
 
 import client from "../api/client"
@@ -35,15 +34,13 @@ export default function Dashboard(): JSX.Element {
     return (
         <>
             <div className="flex flex-col gap-y-24 min-h-screen border-b bg-ifrn-600">
-                <Header isLogged={isLogged} page="Página Inicial"/>
+                <Header isLogged={isLogged}/>
                 <div className="flex flex-wrap gap-x-4 gap-y-10 mx-auto mb-12">
-                    <AsideMenu category="Cursos" />
                     <div className="flex flex-col gap-y-4 w-[40rem]">
                         {posts.map(post => (
                             <Post post={post} user={user} key={post.id} />
                         ))}
                     </div>
-                    <AsideMenu category="Cursos" />
                 </div>
             </div>
             <Footer />

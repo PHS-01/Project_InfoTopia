@@ -13,6 +13,7 @@ export default function HamburguerMenu({children, isLogged, page}: Props): JSX.E
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const [isDropdownOpenConfig, setIsDropdownOpenConfig] = useState(false)
+    const [isCourseOpen, setIsCourseOpen] = useState(false)
 
     return (
         <div className="bg-gray-100">
@@ -24,7 +25,6 @@ export default function HamburguerMenu({children, isLogged, page}: Props): JSX.E
                 <img src="/ifrn.png" alt="Logo IFRN" className="w-12" />
             </Link>
           </h1>
-          {isLogged && <h2 className=" bg-ifrn-600 text-white text-xl font-semibold p-2 max-h-[3rem] rounded-lg">{page}</h2>}
 
           {/* Botão do menu hamburguer */}
           <button
@@ -53,7 +53,7 @@ export default function HamburguerMenu({children, isLogged, page}: Props): JSX.E
         </div>
       </nav>
       {isLogged
-        ? <AuthMobileOptions isDropdownOpen={isDropdownOpen} setIsDropdownOpen={(val) => setIsDropdownOpen(val)} isMenuOpen={isMenuOpen} setIsMenuOpen={(val) => setIsMenuOpen(val)} isDropdownOpenConfig={isDropdownOpenConfig} setIsDropdownOpenConfig={(val) => setIsDropdownOpenConfig(val)} />
+        ? <AuthMobileOptions isDropdownOpen={isDropdownOpen} setIsDropdownOpen={(val) => setIsDropdownOpen(val)} isMenuOpen={isMenuOpen} setIsMenuOpen={(val) => setIsMenuOpen(val)} isDropdownOpenConfig={isDropdownOpenConfig} setIsDropdownOpenConfig={(val) => setIsDropdownOpenConfig(val)} isCourseOpen={isCourseOpen} setIsCourseOpen={(val) => setIsCourseOpen(val)} />
         : <GuestMobileOptions isDropdownOpen={isDropdownOpen} setIsDropdownOpen={(val) => setIsDropdownOpen(val)} isMenuOpen={isMenuOpen} setIsMenuOpen={(val) => setIsMenuOpen(val)} />}
     </div>
     )

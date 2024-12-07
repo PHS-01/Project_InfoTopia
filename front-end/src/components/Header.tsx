@@ -12,14 +12,14 @@ declare global {
 }
 
 interface Props {
-    isLogged?: boolean | undefined
-    page?: string | undefined
+  isLogged?: boolean | undefined
+  page?: string | undefined
 }
 
-export default function Header({isLogged, page}: Props): JSX.Element {
+export default function Header({isLogged}: Props): JSX.Element {
     return (
-        <HamburguerMenu isLogged={isLogged} page={page}>
-            {isLogged ? <AuthOptions /> : <GuestOptions /> }
+        <HamburguerMenu isLogged={isLogged}>
+          {isLogged ? <AuthOptions /> : <GuestOptions /> }
         </HamburguerMenu>
         // <header className="border-b border-dark-gray bg-lime-500">
         //     <div className="flex justify-between px-16 py-6">

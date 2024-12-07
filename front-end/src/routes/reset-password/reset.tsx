@@ -30,11 +30,11 @@ export default function ResetPassword(): JSX.Element {
 
     return (
         <div className="flex flex-col min-h-screen bg-cgray-200">
-            <Header isLogged={true} page="Editar Perfil" />
+            <Header page="Editar Perfil" />
             <div className="flex-grow flex items-center justify-center">
                 <FormCard>
                     <Input inputName="password" label="Nova senha" type="password" placeholder="Nova senha" onChange={(password: string) => setPassword(password)} />
-                    <Button type="submit" color="dark-gray" style="py-2 text-white hover:bg-cgray-800" onClick={action}>
+                    <Button type="submit" style="py-2 bg-ifrn-500 text-white rounded-lg" onClick={action}>
                         Trocar
                     </Button>
                 </FormCard>

@@ -57,20 +57,18 @@ export default function Classe(): JSX.Element {
             <div className="flex flex-col gap-y-24 min-h-screen border-b bg-ifrn-600">
                 <Header isLogged={isLogged} page={`${classe.course.name} ${classe.year} - ${classe.name}`} />
                 <div className="flex flex-wrap gap-x-4 gap-y-10 mx-auto mb-12">
-                    <AsideMenu category="Cursos" />
-                        <div className="flex flex-col gap-y-4 w-[40rem]">
-                            <div className="mb-8 bg-white border border-cgray-800">
-                                <img src={getImage(classe.cover_photo)} alt="Capa do curso" className="w-full" style={{maxHeight: "40rem"}} />
-                                <div className="flex gap-x-4  py-6 px-2">
-                                    <img src={getImage(classe.profile_photo)} alt="Foto de perfil do curso" className="rounded-full w-14" />
-                                    <h4 className="text-xl my-auto">{classe.course.name} {classe.year} - {classe.name}</h4>
-                                </div>
+                    <div className="flex flex-col gap-y-4 w-[40rem]">
+                        <div className="mb-8 bg-white border border-cgray-800">
+                            <img src={getImage(classe.cover_photo)} alt="Capa do curso" className="w-full" style={{maxHeight: "40rem"}} />
+                            <div className="flex gap-x-4  py-6 px-2">
+                                <img src={getImage(classe.profile_photo)} alt="Foto de perfil do curso" className="rounded-full w-14" />
+                                <h4 className="text-xl my-auto">{classe.course.name} {classe.year} - {classe.name}</h4>
                             </div>
-                            {posts.map(post => (
-                                <Post  key={post.id} post={post} user={user} />
-                            ))}
                         </div>
-                    <AsideMenu category="Cursos" />
+                        {posts.map(post => (
+                            <Post  key={post.id} post={post} user={user} />
+                        ))}
+                    </div>
                 </div>
             </div>
             <Footer />

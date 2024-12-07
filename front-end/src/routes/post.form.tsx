@@ -12,7 +12,6 @@ import InputFile from "../components/inputs/InputFile"
 import { appendIfExists, isEmptyObject, objToArr } from "../utils/utils"
 import { ClasseType, PostType, scopePost, scopeUser, UserType } from "../api/responses"
 import { can, isLeader } from "../utils/authorization"
-import { AxiosError } from "axios"
 import ErrorCard from "../components/ErrorCard"
 
 export default function PostForm(): JSX.Element {

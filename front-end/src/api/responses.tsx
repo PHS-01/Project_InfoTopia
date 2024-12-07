@@ -53,6 +53,7 @@ export interface CommentType {
 export interface CourseType {
     id: number
     name: string
+    classes: Array<ClasseType>
 }
 
 export const scopePost = {
@@ -76,6 +77,7 @@ export const scopePost = {
         course: {
             id: 0,
             name: '',
+            classes: []
         }
     },
     comments: [],
@@ -99,7 +101,8 @@ export const scopeClasse = {
     year: '',
     course: {
         id: 0,
-        name: ''
+        name: '',
+        classes: []
     },
     posts: []
 }

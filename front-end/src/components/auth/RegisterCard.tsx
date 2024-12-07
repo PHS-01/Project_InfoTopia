@@ -45,7 +45,7 @@ export default function RegisterCard({ setErrors }: Props): JSX.Element {
                 <Input inputName="matriculation" label="Matrícula" type="text" placeholder="Matrícula do SUAP" onChange={(matriculation) => setMatriculation(matriculation)} />
                 <Input inputName="email" label="E-mail" type="email" placeholder="E-mail" onChange={(email) => setEmail(email)} />
                 <Input inputName="password" label="Senha" type="password" placeholder="Senha do IF" onChange={(password) => setPassword(password)} />
-                <Button type="submit" color="dark-gray" style="py-2 text-white hover:bg-cgray-800" onClick={action}>
+                <Button type="submit" style="py-2 bg-ifrn-500 text-white rounded-lg" onClick={action}>
                     Entrar
                 </Button>
                 <Link to="/login" className="text-xl text-cgray-800 underline">Já possui conta?</Link>

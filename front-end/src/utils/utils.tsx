@@ -91,3 +91,7 @@ export function objToArr(obj: Obj): Array<string> {
     }
     return arr
 }
+
+export function castInt(n: string|number): number {
+    return isString(n) ? parseInt(n) : n
+}
